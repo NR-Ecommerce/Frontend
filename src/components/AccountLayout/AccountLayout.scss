@@ -1,0 +1,74 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.accountLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &__Container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 16px;
+    margin-top: 80px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+  &__det {
+    font-size: 18px;
+    padding-top: 1rem;
+    color: #64748b;
+    display: flex;
+    &-black {
+      color: black;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  }
+  &__links {
+    width: 100%;
+    margin-top: 40px;
+    border-top: 1px solid #a1b3cd;
+    border-bottom: 1px solid #a1b3cd;
+    display: flex;
+
+  }
+  &__link {
+    text-decoration: none;
+    color: #64748b;
+    padding: 2rem 0;
+    font-size: .75rem;
+    margin-left: 20px;
+
+    @include mdMinBreakPoint {
+      margin-left: 56px;
+      font-size: 1rem;
+    }
+  }
+  &__active{
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid rgba(59,130,246,.5);
+  }
+}

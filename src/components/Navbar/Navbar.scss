@@ -1,0 +1,90 @@
+@use "../../sassStyles/mixins" as *;
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding: 15px 16px;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid #f5f1f1;
+  z-index: 1000;
+  background-color: #fff;
+  // position: relative;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      margin: 0 7.5px;
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+
+    }
+    @include xxlMinBreakPoint{
+      max-width: 1200px;
+    }
+    @include screen-full{
+      max-width: 1300px;
+
+    }
+  }
+  &__icons {
+    display: flex;
+  }
+  &__icon,
+  &__Left {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 30px;
+    color: #374151;
+    position: relative;
+
+    &:hover {
+      background-color: #edf1f4;
+    }
+    &--size {
+      height: 24px;
+      width: 24px;
+      @include lgMinBreakPoint {
+        height: 30px;
+        width: 30px;
+      }
+    }
+  }
+  &__icon--active {
+    display: none;
+    @include xlMinBreakPoint {
+      display: flex;
+    }
+  }
+  &__Left {
+    @include xlMinBreakPoint {
+      display: none;
+    }
+  }
+  &__Left--icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  &__center svg {
+    height: 31px;
+    width: 112px;
+    @include mdMinBreakPoint {
+      height: 40px;
+      width: 140px;
+    }
+  }
+}

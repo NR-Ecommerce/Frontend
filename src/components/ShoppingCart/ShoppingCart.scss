@@ -1,0 +1,118 @@
+@use "../../sassStyles/mixins" as *;
+
+.shoppingCart {
+  &__container {
+    padding: 32px 0;
+    width: 100%;
+    // background-color: rebeccapurple;
+    border-bottom: 1px solid #e9e6e6;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__right {
+    display: flex;
+  }
+  &__img {
+    height: 144px;
+    width: 96px;
+    background-color: red;
+    margin-left: 10px;
+    border-radius: 8px;
+  }
+  &__title {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  &__sizes {
+    display: flex;
+    margin: 8px 0;
+  }
+  &__color,
+  &__size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding-left: 16px;
+    gap: 0.3rem;
+    color: #475569;
+    svg {
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+  &__color {
+    border-left: 1px solid #e9e6e6;
+  }
+  &__size {
+    padding-right: 16px;
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  &__price {
+    margin-top: 58px;
+    color: #22c55e;
+    border: 2px solid #22c55e;
+    border-radius: 5px;
+    padding: 2px 5px;
+    display: flex;
+    align-items: center;
+    @include mdMinBreakPoint {
+      margin-top: 0;
+      margin-bottom: 50px;
+    }
+    &--toman {
+      font-size: 14px;
+      margin-right: 5px;
+    }
+  }
+  &__remove {
+    color: #0284c7;
+  }
+  &__select {
+    outline: none;
+    padding: 5px 10px;
+    margin: 4px 0;
+    color: #475569;
+    border: 1px solid #9daabe;
+    border-radius: 5px;
+    @include mdMinBreakPoint {
+      opacity: 0;
+    }
+  }
+  &__available {
+    display: flex;
+    align-items: center;
+    color: #475569;
+    margin-top: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid #e9e6e6;
+    padding: 3px 5px;
+    width: 55px;
+    &-beta {
+      width: 64px;
+    }
+  }
+  &__center {
+    display: none;
+    align-items: flex-start;
+    justify-content: center;  
+    gap: 1.5rem;
+    &--adder {
+      cursor: pointer;
+      border: 1px solid #475569;
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+    }
+    
+    @include mdMinBreakPoint {
+      display: flex;
+    }
+  }
+}

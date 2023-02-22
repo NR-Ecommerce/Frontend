@@ -1,0 +1,121 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.shoppingCarts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__container {
+    margin: 64px 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    height: 500px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      margin: 64px 15px;
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+      margin: 80px 15px 112px 15px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid #e9e6e6;
+
+    @include mdMinBreakPoint {
+      font-size: 1.875rem;
+    }
+
+    @include xlMinBreakPoint {
+      font-size: 2.25rem;
+    }
+  }
+  &__all {
+    display: flex;
+    flex-direction: column;
+    @include xlMinBreakPoint {
+      flex-direction: row-reverse;
+      padding-right: 40px;
+    }
+  }
+  &__products {
+    width: 100%;
+    @include xlMinBreakPoint {
+      padding-right: 40px;
+    }
+  }
+  &__price {
+    @include xlMinBreakPoint {
+      position: sticky;
+      top: 100px;
+      width: 100%;
+      padding-left: 40px;
+    }
+    display: flex;
+    flex-direction: column;
+    &--title {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 32px 0;
+      @include xlMinBreakPoint {
+        padding: 0px 0 32px 0;
+        // margin-top: 32px;
+      }
+    }
+    &--boxes {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #e9e6e6;
+      padding: 18px 0;
+      font-weight: bold;
+      font-size: 16px;
+
+      &-right {
+        font-weight: normal;
+      }
+      &-imp,
+      &-imps {
+        font-size: 20px;
+        border: none;
+      }
+    }
+    &--button {
+      color: white;
+      background-color: variables.$primaryColor;
+      padding: 14px 24px;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 40px;
+      margin-top: 16px;
+      cursor: pointer;
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+.shoppingCarts__price--container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @include xlMinBreakPoint {
+    width: 60%;
+    height: 94%;
+    margin-top: 32px;
+    border-left: 1px solid #e9e6e6;
+  }
+}
