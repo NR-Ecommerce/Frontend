@@ -6,7 +6,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 1",
-    price: "2,000,000",
+    price: "200",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -17,7 +17,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 2",
-    price: "2,000,000",
+    price: "200",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -27,8 +27,8 @@ const productsApi = [
   {
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 2",
-    price: "2,000,000",
+    title: "محصول 3",
+    price: "200",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -38,8 +38,8 @@ const productsApi = [
   {
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 2",
-    price: "2,000,000",
+    title: "محصول 4",
+    price: "200",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -49,8 +49,8 @@ const productsApi = [
   {
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 2",
-    price: "2,000,000",
+    title: "محصول 5",
+    price: "200",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -60,8 +60,8 @@ const productsApi = [
   {
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 3",
-    price: "2,000,000",
+    title: "محصول 6",
+    price: "200",
     color: "سفید",
     is_available: false,
     size: "xl",
@@ -71,12 +71,22 @@ const productsApi = [
 ];
 
 const ShoppingCarts = () => {
-  const [products, setProducts] = useState(productsApi);
+  // localStorage.setItem('products', JSON.stringify(productsApi));
+  const [products, setProducts] = useState(
+    JSON.parse(localStorage.getItem("products"))
+  );
+  const [price, setPrice] = useState();
 
-  // useEffect(() => {
-  //   setProducts(localStorage.getItem('products'))
-  // }, [products]);
-
+  useEffect(() => {
+    setPrice(
+      products.reduce((accumulator, a) => {
+        return accumulator + +a.price * +a.number;
+      }, 0)
+    );
+    // setProducts(JSON.parse(localStorage.getItem("products")));
+    console.log(price);
+    console.log(products);
+  }, [products]);
 
   return (
     <div className="shoppingCarts">
@@ -84,12 +94,20 @@ const ShoppingCarts = () => {
         <div className="shoppingCarts__title">سبد خرید</div>
         <div className="shoppingCarts__all">
           <div className="shoppingCarts__products">
-            {products.map((product) => {
-              return (
-                <ShoppingCart setProducts={setProducts} product={product} />
-              );
-            })}
-            {/* <ShoppingCart/> */}
+            {products &&
+              (products.length !== 0 ? (
+                products.map((product) => {
+                  return (
+                    <ShoppingCart
+                      setProducts={setProducts}
+                      products={products}
+                      product={product}
+                    />
+                  );
+                })
+              ) : (
+                <div className="free">سبد خرید شما خالی است.</div>
+              ))}
           </div>
           <div className="shoppingCarts__price--container">
             <div className="shoppingCarts__price">
@@ -98,21 +116,21 @@ const ShoppingCarts = () => {
                 <div className="shoppingCarts__price--boxes-right">
                   جمع کل محصولات
                 </div>
-                2,000,000
+                {products && price} تومان
               </div>
               <div className="shoppingCarts__price--boxes">
                 <div className="shoppingCarts__price--boxes-right">
                   هزینه ارسال
                 </div>
-                200,000
+                20,000 تومان
               </div>
               <div className="shoppingCarts__price--boxes">
                 <div className="shoppingCarts__price--boxes-right">مالیات</div>
-                19,0000
+                {products && price * 0.09} تومان
               </div>
               <div className="shoppingCarts__price--boxes shoppingCarts__price--boxes-imps">
                 <div className="shoppingCarts__price--boxes-imp">جمع کل</div>
-                3,000,000
+                {products && price * 0.09 + price + 20000} تومان
               </div>
               <button className="shoppingCarts__price--button">پرداخت</button>
             </div>

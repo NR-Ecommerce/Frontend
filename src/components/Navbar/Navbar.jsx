@@ -5,7 +5,7 @@ import { BiUser, BiSearch } from "react-icons/bi";
 import { FiMenu } from "react-icons/fi";
 import Searchbar from "../Searchbar/Searchbar";
 import NavbarUser from "../NavbarUser/NavbarUser";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isSearch, setSearch] = useState(false);
@@ -72,9 +72,9 @@ const Navbar = () => {
               )}
               <BiUser className="navbar__icon--size" onClick={UserHandler} />
             </div>
-            <div className="navbar__icon">
-              <CartShop number={3} />
-            </div>
+            <Link to='/cart' className="navbar__icon">
+              <CartShop number={JSON.parse(localStorage.getItem("products")).length} />
+            </Link>
           </div>
         </div>
       </div>

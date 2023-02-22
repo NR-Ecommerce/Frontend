@@ -1,22 +1,33 @@
 import "./ShoppingCart.scss";
-import { BiPlus,BiMinus } from "react-icons/bi";
+import { BiPlus, BiMinus } from "react-icons/bi";
 
-const ShoppingCart = ({ product,setProducts }) => {
-  const addHandler=()=>{
-  }
-  const removeHandler=()=>{
+const ShoppingCart = ({ product,products, setProducts }) => {
+  const addHandler = () => {
+    // const updated = products.map(item => item.number );
+
+  };
+  const removeHandler = () => {
+    console.log(product);
     
-  }
+    const updated = products.filter(item => item.id !== product.id);
+
+    localStorage.setItem('products', JSON.stringify(updated));
+    setProducts(updated)
+  };
   return (
     <div className="shoppingCart__container">
       <div className="shoppingCart__right">
         {/* <div className="shoppingCart__img"></div> */}
-        <img src={product.picture} alt={product.id}  className="shoppingCart__img"/>
+        <img
+          src={product.picture}
+          alt={product.id}
+          className="shoppingCart__img"
+        />
         <div className="shoppingCart__det">
           <div className="shoppingCart__title">{product.title}</div>
           <div className="shoppingCart__sizes">
             <div className="shoppingCart__color">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <svg  viewBox="0 0 24 24" fill="none">
                 <path
                   d="M7.01 18.0001L3 13.9901C1.66 12.6501 1.66 11.32 3 9.98004L9.68 3.30005L17.03 10.6501C17.4 11.0201 17.4 11.6201 17.03 11.9901L11.01 18.0101C9.69 19.3301 8.35 19.3301 7.01 18.0001Z"
                   stroke="currentColor"
@@ -60,7 +71,7 @@ const ShoppingCart = ({ product,setProducts }) => {
               {product.color}
             </div>
             <div className="shoppingCart__size">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+              <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M21 9V3H15"
                   stroke="currentColor"
@@ -99,25 +110,37 @@ const ShoppingCart = ({ product,setProducts }) => {
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-            <option on value="5">5</option>
+            <option on value="5">
+              5
+            </option>
             <option value="6">6</option>
           </select>
-          <div className={ product.is_available ? "shoppingCart__available":"shoppingCart__available shoppingCart__available-beta" } >
+          <div
+            className={
+              product.is_available
+                ? "shoppingCart__available"
+                : "shoppingCart__available shoppingCart__available-beta"
+            }
+          >
             {product.is_available ? "موجود" : "ناموجود"}
           </div>
         </div>
       </div>
       <div className="shoppingCart__center">
-        <BiPlus className="shoppingCart__center--adder" onClick={addHandler}/>
+        <BiPlus className="shoppingCart__center--adder" onClick={addHandler} />
         {product.number}
-        <BiMinus className="shoppingCart__center--adder" onClick={removeHandler}/>
+        <BiMinus
+          className="shoppingCart__center--adder"
+        />
       </div>
       <div className="shoppingCart__left">
         <div className="shoppingCart__price">
           {product.price}
           <div className="shoppingCart__price--toman">تومان</div>
         </div>
-        <div className="shoppingCart__remove">حذف</div>
+        <div onClick={removeHandler} className="shoppingCart__remove">
+          حذف
+        </div>
       </div>
     </div>
   );
