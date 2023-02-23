@@ -82,8 +82,9 @@
     color: #475569;
     border: 1px solid #9daabe;
     border-radius: 5px;
+    display: flex;
     @include mdMinBreakPoint {
-      opacity: 0;
+      display: none;
     }
   }
   &__available {

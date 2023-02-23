@@ -1,18 +1,35 @@
+import { useEffect } from "react";
 import "./ShoppingCart.scss";
 import { BiPlus, BiMinus } from "react-icons/bi";
 
-const ShoppingCart = ({ product,products, setProducts }) => {
+const ShoppingCart = ({ product, products, setProducts }) => {
   const addHandler = () => {
-    // const updated = products.map(item => item.number );
+    products[products.findIndex((x) => x.id === product.id)].number =
+      products[products.findIndex((x) => x.id === product.id)].number + 1;
+    const updated = [...products];
+    localStorage.setItem("products", JSON.stringify(updated));
+    setProducts(updated);
+  };
 
+  const minusHandler = () => {
+    products[products.findIndex((x) => x.id === product.id)].number =
+      products[products.findIndex((x) => x.id === product.id)].number - 1;
+    const updated = [...products];
+    localStorage.setItem("products", JSON.stringify(updated));
+    setProducts(updated);
+  };
+  const selectHandler = (e) => {
+    products[products.findIndex((x) => x.id === product.id)].number =
+      e.target.value;
+    const updated = [...products];
+    localStorage.setItem("products", JSON.stringify(updated));
+    setProducts(updated);
   };
   const removeHandler = () => {
-    console.log(product);
-    
-    const updated = products.filter(item => item.id !== product.id);
+    const updated = products.filter((item) => item.id !== product.id);
 
-    localStorage.setItem('products', JSON.stringify(updated));
-    setProducts(updated)
+    localStorage.setItem("products", JSON.stringify(updated));
+    setProducts(updated);
   };
   return (
     <div className="shoppingCart__container">
@@ -27,7 +44,7 @@ const ShoppingCart = ({ product,products, setProducts }) => {
           <div className="shoppingCart__title">{product.title}</div>
           <div className="shoppingCart__sizes">
             <div className="shoppingCart__color">
-              <svg  viewBox="0 0 24 24" fill="none">
+              <svg viewBox="0 0 24 24" fill="none">
                 <path
                   d="M7.01 18.0001L3 13.9901C1.66 12.6501 1.66 11.32 3 9.98004L9.68 3.30005L17.03 10.6501C17.4 11.0201 17.4 11.6201 17.03 11.9901L11.01 18.0101C9.69 19.3301 8.35 19.3301 7.01 18.0001Z"
                   stroke="currentColor"
@@ -104,8 +121,15 @@ const ShoppingCart = ({ product,products, setProducts }) => {
               {product.size}
             </div>
           </div>
-          <select className="shoppingCart__select" name="" id="">
-            <option value="0">0</option>
+          <select
+            defaultValue={
+              products[products.findIndex((x) => x.id === product.id)].number
+            }
+            onChange={selectHandler}
+            className="shoppingCart__select"
+            name=""
+            id=""
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -129,9 +153,12 @@ const ShoppingCart = ({ product,products, setProducts }) => {
       <div className="shoppingCart__center">
         <BiPlus className="shoppingCart__center--adder" onClick={addHandler} />
         {product.number}
-        <BiMinus
-          className="shoppingCart__center--adder"
-        />
+        <button
+          onClick={minusHandler}
+          disabled={product.number > 1 ? false : true}
+        >
+          <BiMinus className="shoppingCart__center--adder" />
+        </button>
       </div>
       <div className="shoppingCart__left">
         <div className="shoppingCart__price">

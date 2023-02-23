@@ -76,16 +76,24 @@ const ShoppingCarts = () => {
     JSON.parse(localStorage.getItem("products"))
   );
   const [price, setPrice] = useState();
+  const [allPrice, setAllPrice] = useState();
 
   useEffect(() => {
     setPrice(
-      products.reduce((accumulator, a) => {
-        return accumulator + +a.price * +a.number;
-      }, 0)
+      products
+        .reduce((accumulator, a) => {
+          return accumulator + +a.price * +a.number;
+        }, 0)
+        .toLocaleString()
+    );
+    setAllPrice(
+      (
+        products.reduce((accumulator, a) => {
+          return accumulator + +a.price * +a.number;
+        }, 0) + 20000
+      ).toLocaleString()
     );
     // setProducts(JSON.parse(localStorage.getItem("products")));
-    console.log(price);
-    console.log(products);
   }, [products]);
 
   return (
@@ -124,13 +132,10 @@ const ShoppingCarts = () => {
                 </div>
                 20,000 تومان
               </div>
-              <div className="shoppingCarts__price--boxes">
-                <div className="shoppingCarts__price--boxes-right">مالیات</div>
-                {products && price * 0.09} تومان
-              </div>
+
               <div className="shoppingCarts__price--boxes shoppingCarts__price--boxes-imps">
                 <div className="shoppingCarts__price--boxes-imp">جمع کل</div>
-                {products && price * 0.09 + price + 20000} تومان
+                {products && allPrice} تومان
               </div>
               <button className="shoppingCarts__price--button">پرداخت</button>
             </div>
