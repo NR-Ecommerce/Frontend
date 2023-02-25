@@ -5,6 +5,11 @@ import { BiHeart, BiBulb, BiExit, BiHelpCircle } from "react-icons/bi";
 import { TbClipboardList } from "react-icons/tb";
 
 const NavbarUser = () => {
+  const logOutHandler=()=>{
+    if(localStorage.getItem('access_token')){
+      localStorage.removeItem('access_token')
+    }
+  }
   return (
     <div className="navbarUser__container">
       <div className="navbarUser__Profile">
@@ -42,7 +47,7 @@ const NavbarUser = () => {
           <BiHelpCircle className="navbarUser__icon" />
           <div className="navbarUser__name">راهنما</div>
         </div>
-        <div className="navbarUser__site">
+        <div className="navbarUser__site" onClick={logOutHandler}>
           <BiExit className="navbarUser__icon" />
 
           <div className="navbarUser__name">خروج</div>

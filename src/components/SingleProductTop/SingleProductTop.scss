@@ -1,0 +1,182 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.singleProductTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    max-width: 400px;
+    width: 100%;
+    padding: 0 26px;
+    margin-top: 20px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__right {
+    width: 100%;
+  }
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  &__left,
+  &__left-container {
+    width: 100%;
+    @include xlMinBreakPoint {
+      width: 50%;
+    }
+  }
+  &__price {
+    color: #22c55e;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border: 2px solid #22c55e;
+    border-radius: 0.5rem;
+    margin-left: 20px;
+  }
+  &__stars {
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #acacac;
+    padding-right: 20px;
+  }
+  &__priceAndRev {
+    display: flex;
+    align-items: center;
+  }
+  &__numbersAndButton {
+    display: flex;
+  }
+  &__left-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__left-pic {
+    width: 100%;
+    border-radius: 1rem;
+  }
+  &__left-picCon {
+    width: 48%;
+    margin-top: 12px;
+    border-radius: 1rem;
+  }
+  &__radioColor {
+    height: 30px;
+    width: 30px;
+    margin-left: 15px;
+    background-color: green;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    &-active {
+      color: black;
+    }
+  }
+  &__colors {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  &__colorsCon {
+    margin-top: 30px;
+  }
+  &__names {
+    margin-bottom: 10px;
+    display: flex;
+    &-bold {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  }
+  &__sizes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    @include mdMinBreakPoint {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    @include lgMinBreakPoint {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    @include xlMinBreakPoint {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @include xxlMinBreakPoint {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  &__size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 22px;
+    border-radius: 1rem;
+    border: 1px solid #dfdfdf;
+    cursor: pointer;
+    &-active {
+      background-color: #0284c7;
+      color: white;
+      border: none;
+    }
+  }
+  &__add {
+    border: none;
+    padding: 18px 36px;
+    color: white;
+    background-color: variables.$primaryColor;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  &__numbersAndButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 28px 0;
+  }
+}
+.gaper {
+  margin-right: 12px;
+}
+.star {
+  color: rgb(250, 204, 21);
+  padding-bottom: 5px;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}
+.active {
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: white;
+  border-radius: 50%;
+}

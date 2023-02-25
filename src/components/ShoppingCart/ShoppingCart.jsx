@@ -1,22 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./ShoppingCart.scss";
 import { BiPlus, BiMinus } from "react-icons/bi";
 
 const ShoppingCart = ({ product, products, setProducts }) => {
+  const [number, setNumber] = useState(
+    products[products.findIndex((x) => x.id === product.id)].number
+  );
+
   const addHandler = () => {
     products[products.findIndex((x) => x.id === product.id)].number =
-      products[products.findIndex((x) => x.id === product.id)].number + 1;
+      +products[products.findIndex((x) => x.id === product.id)].number + 1;
     const updated = [...products];
     localStorage.setItem("products", JSON.stringify(updated));
     setProducts(updated);
+    const updatedNum =
+      products[products.findIndex((x) => x.id === product.id)].number;
+
+    setNumber(updatedNum);
   };
 
   const minusHandler = () => {
     products[products.findIndex((x) => x.id === product.id)].number =
-      products[products.findIndex((x) => x.id === product.id)].number - 1;
+      +products[products.findIndex((x) => x.id === product.id)].number - 1;
     const updated = [...products];
     localStorage.setItem("products", JSON.stringify(updated));
     setProducts(updated);
+    const updatedNum =
+      products[products.findIndex((x) => x.id === product.id)].number;
+
+    setNumber(updatedNum);
   };
   const selectHandler = (e) => {
     products[products.findIndex((x) => x.id === product.id)].number =
@@ -122,9 +134,7 @@ const ShoppingCart = ({ product, products, setProducts }) => {
             </div>
           </div>
           <select
-            defaultValue={
-              products[products.findIndex((x) => x.id === product.id)].number
-            }
+            defaultValue={number}
             onChange={selectHandler}
             className="shoppingCart__select"
             name=""

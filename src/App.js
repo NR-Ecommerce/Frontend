@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import AccountLayout from './components/AccountLayout/AccountLayout';
 import AccountInfoPage from './pages/AccountInfoPage';
+import SingleProductPage from './pages/SingleProductPage';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
           <Route path="register" element={<SignUpPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="cart" element={<ShoppingCartPage />} />
+          <Route path="singleProduct" element={<SingleProductPage />} />
+
           <Route path='dashboard/' element={<AccountLayout/>}>
             <Route path="accountInfo" element={<AccountInfoPage/>}/>
           </Route>

@@ -68,12 +68,12 @@ const Navbar = () => {
             )}
             <div className="navbar__icon">
               { isUser && (
-                <NavbarUser className={isUser ? "active" : "deactive"} />
+                <NavbarUser className={isUser ? "active" : "deactive"}  />
               )}
               <BiUser className="navbar__icon--size" onClick={UserHandler} />
             </div>
             <Link to='/cart' className="navbar__icon">
-              <CartShop number={JSON.parse(localStorage.getItem("products")).length} />
+              <CartShop number={JSON.parse(localStorage.getItem("products"))? JSON.parse(localStorage.getItem("products")).length:0} />
             </Link>
           </div>
         </div>
