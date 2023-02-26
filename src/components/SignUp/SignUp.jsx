@@ -19,7 +19,7 @@ const SignUp = () => {
     console.log(data);
     navigate('/login  ');
     axiosInstance
-      .post(`user/register/`, {
+      .post(`api/user/register/`, {
         phone_number: data.phone_number,
         first_name: data.first_name,
         last_name: data.last_name,
@@ -28,9 +28,10 @@ const SignUp = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        navigate("/login");
+        // navigate("/login");
       }).catch((res)=>{
           console.log(res.data);
+          console.log('kir shodam')
           // setError('phone_number',{type:'requr',message})
       });
   };

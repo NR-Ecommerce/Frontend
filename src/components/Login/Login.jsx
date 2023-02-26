@@ -15,7 +15,7 @@ const Register = () => {
   const onSubmitHandler = (data) => {
     console.log(data);
     axiosInstance
-      .post(`token/`, {
+      .post(`/api/token/`, {
         phone_number: data.phone_number,
         password: data.password,
       })
@@ -23,7 +23,7 @@ const Register = () => {
         localStorage.setItem("access_token",res.data.access);
         localStorage.setItem("refresh_token",res.data.refresh);
         axiosInstance.defaults.headers['Authorization']=
-        'JWT ' + localStorage.getItem('access_token');
+        'Bearer ' + localStorage.getItem('access_token');
 
         navigate(-2);
         console.log(res);

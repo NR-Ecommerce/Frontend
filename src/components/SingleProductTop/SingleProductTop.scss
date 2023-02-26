@@ -78,6 +78,7 @@
   &__left-pic {
     width: 100%;
     border-radius: 1rem;
+    background-color: #acacac;
   }
   &__left-picCon {
     width: 48%;
@@ -138,6 +139,7 @@
     padding: 8px 22px;
     border-radius: 1rem;
     border: 1px solid #dfdfdf;
+    max-width: 70px;
     cursor: pointer;
     &-active {
       background-color: #0284c7;
