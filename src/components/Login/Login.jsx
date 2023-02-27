@@ -2,8 +2,23 @@ import "./Login.scss";
 import { useForm } from "react-hook-form";
 import axiosInstance from "../../hooks/axios";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const notify = () => {
+    toast.success("!با موفقیت وارد شدید", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
+
   const {
     register,
     handleSubmit,
@@ -20,10 +35,11 @@ const Register = () => {
         password: data.password,
       })
       .then((res) => {
-        localStorage.setItem("access_token",res.data.access);
-        localStorage.setItem("refresh_token",res.data.refresh);
-        axiosInstance.defaults.headers['Authorization']=
-        'Bearer ' + localStorage.getItem('access_token');
+        notify();
+        localStorage.setItem("access_token", res.data.access);
+        localStorage.setItem("refresh_token", res.data.refresh);
+        axiosInstance.defaults.headers["Authorization"] =
+          "Bearer " + localStorage.getItem("access_token");
 
         navigate(-2);
         console.log(res);
@@ -88,11 +104,16 @@ const Register = () => {
             ""
           )}
           <input type="submit" className="register__button" value="ورود" />
-          <div className="register__goToReg"> اکانت ندارید؟ 
-          <Link className="register__goToReg-link" to='/register'>ساخت اکانت</Link>
+          <div className="register__goToReg">
+            {" "}
+            اکانت ندارید؟
+            <Link className="register__goToReg-link" to="/register">
+              ساخت اکانت
+            </Link>
           </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

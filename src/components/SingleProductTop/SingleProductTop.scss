@@ -35,12 +35,19 @@
   }
   &__right {
     width: 100%;
+    @include xlMinBreakPoint {
+      width: 45%;
+      margin-left: 28px;
+    }
   }
   &__title {
     font-weight: bold;
     font-size: 24px;
     margin-top: 40px;
     margin-bottom: 20px;
+    @include xlMinBreakPoint {
+      margin-top: 10px;
+    }
   }
   &__left,
   &__left-container {
@@ -87,10 +94,10 @@
   }
   &__radioColor {
     height: 30px;
-    width: 30px;
+    width: 50px;
     margin-left: 15px;
     background-color: green;
-    border-radius: 50%;
+    border-radius: 9999px;
     cursor: pointer;
     position: relative;
     &-active {
@@ -122,10 +129,10 @@
       grid-template-columns: repeat(6, 1fr);
     }
     @include xlMinBreakPoint {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(6, 1fr);
     }
     @include xxlMinBreakPoint {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(8, 1fr);
     }
   }
   &__size {
@@ -155,12 +162,102 @@
     border-radius: 9999px;
     cursor: pointer;
     font-weight: bold;
+    width: 100%;
   }
   &__numbersAndButton {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 28px 0;
+  }
+  &__numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(241, 245, 249, 0.7);
+    padding: 12px 16px;
+    border-radius: 9999px;
+    margin-right: 20px;
+  }
+  &__adderCon {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #b0b0b0;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    &:hover {
+      border: 1px solid #222222;
+    }
+  }
+  &__number {
+    margin: 0 15px;
+  }
+  &__descriptions {
+    padding: 28px 0;
+    border-top: 1px solid #c5c5c5;
+  }
+  &__descriptionCon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: rgba(226, 232, 240, 0.6);
+    border-radius: 0.5rem;
+  }
+  &__description-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  &__description-show {
+    margin-top: 10px;
+    padding: 12px 16px;
+  }
+  &__description-title {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  // &__notes {
+  //   display: flex;
+  //   flex-direction: column;
+  //   margin-top: 30px;
+  //   @include mdMinBreakPoint {
+  //     flex-direction: row;
+  //     flex-wrap: wrap;
+  //   }
+  // }
+  // &__note {
+  //   padding: 20px;
+  //   border-radius: 1rem;
+  //   margin-bottom: 1%;
+  //   width: 100%;
+  //   @include mdMinBreakPoint {
+  //     width: 49%;
+  //     margin-left: 1%;
+
+  //   }
+  //   &-title{
+  //     font-weight: bold;
+  //     font-size: 16px;
+  //   }
+  //   &-dec{
+  //     font-size: 14px;
+  //     color: #64748B;
+  //   }
+  // }
+  &__box{
+    width: 100%;
+    @include xlMinBreakPoint {
+      display: none;
+    }
+    @include xxlMinBreakPoint {
+      display: flex;
+    }
   }
 }
 .gaper {
@@ -178,7 +275,7 @@
   width: 10px;
   position: absolute;
   top: 10px;
-  left: 10px;
+  left: 20px;
   background-color: white;
   border-radius: 50%;
 }

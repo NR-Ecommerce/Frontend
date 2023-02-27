@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import "./SingleProductTop.scss";
 import { FaStar } from "react-icons/fa";
 import axiosInstance from "../../hooks/axios";
+import axios from "axios";
+import { BiPlus, BiMinus } from "react-icons/bi";
+import Boxes from "../Boxes/Boxes";
 
 const productApi = {
   id: 1,
@@ -62,30 +65,6 @@ const productApi = {
           id: 1,
           name: "XS",
         },
-        {
-          id: 2,
-          name: "S",
-        },
-        {
-          id: 3,
-          name: "M",
-        },
-        {
-          id: 4,
-          name: "L",
-        },
-        {
-          id: 5,
-          name: "XL",
-        },
-        {
-          id: 6,
-          name: "XXL",
-        },
-        {
-          id: 7,
-          name: "XXXL",
-        },
       ],
     },
     {
@@ -115,29 +94,6 @@ const productApi = {
         },
       ],
     },
-    {
-      id: 3,
-      product: 1,
-      color: {
-        id: 3,
-        name: "سبز",
-        code: "#72c472",
-      },
-      sizes: [
-        {
-          id: 3,
-          name: "M",
-        },
-        {
-          id: 4,
-          name: "L",
-        },
-        {
-          id: 5,
-          name: "XL",
-        },
-      ],
-    },
   ],
   is_available: true,
   created_at: "2023-02-23T17:17:04.557875Z",
@@ -149,16 +105,27 @@ const SingleProductTop = () => {
   const [size, setSize] = useState(product.details[0].sizes);
   const [selectedSize, setSelectedSize] = useState(size[0].name);
   const [loading, setLoading] = useState(true);
+  const [description, setDescription] = useState(false);
+  let [qty, setQty] = useState(1);
   // console.log(size);
 
   useEffect(() => {
-    axiosInstance.get(`/api/store/products/${id}`).then((res) => {
-      if (res.status <= 300 && res.status >= 200) {
+    axiosInstance
+      .get(`/api/store/products/${id}`)
+      .then((res) => {
+        if (res.status <= 300 && res.status >= 200) {
+          console.log(res.data);
+          setProduct(res.data);
+          setSize(res.data.details[0].sizes)
+          console.log(res.data.details[0].sizes);
+          setLoading(false);
+        }
+      })
+      .then((res) => {
+
+        console.log(product);
         setLoading(false);
-        console.log(res.data);
-        setProduct(res.data);
-      }
-    });
+      });
     // setProducts(JSON.parse(localStorage.getItem("products")));
   }, []);
 
@@ -176,7 +143,15 @@ const SingleProductTop = () => {
     // console.log(size);
     // setSize(newSize)
   };
-
+  const addHandler = () => {
+    setQty((e) => ++e);
+  };
+  const minusHandler = () => {
+    setQty((e) => --e);
+  };
+  const descriptionHandler = () => {
+    setDescription((e) => !e);
+  };
   return (
     <div className="singleProductTop">
       <div className="singleProductTop__container">
@@ -193,33 +168,41 @@ const SingleProductTop = () => {
           </div>
           <div className="singleProductTop__colorsCon">
             <div className="singleProductTop__names">
-              {" "}
               رنگ : <div className="singleProductTop__names-bold">{color}</div>
             </div>
             <div className="singleProductTop__colors">
-              {product.details.map((detail) => {
-                return (
-                  <div
-                    id={detail.id}
-                    onClick={ColorHandler}
-                    style={{ backgroundColor: `${detail.color.code}` }}
-                    className="singleProductTop__radioColor "
-                  >
+              {loading ? (
+                <div></div>
+              ) : (
+                product.details.map((detail) => {
+                  // console.log(detail);
+                  return (
                     <div
-                      className={color === detail.color.name ? "active" : ""}
-                    ></div>
-                  </div>
-                );
-              })}
+                      id={detail.id}
+                      onClick={ColorHandler}
+                      style={{ backgroundColor: `${detail.color.code}` }}
+                      className="singleProductTop__radioColor "
+                    >
+                      <div
+                        className={color === detail.color.name ? "active" : ""}
+                      ></div>
+                    </div>
+                  );
+                })
+              )}
             </div>
           </div>
           <div className="singleProductTop__sizesCon">
             <div className="singleProductTop__names">
               سایز :
-              <div className="singleProductTop__names-bold">{selectedSize}</div>
+              <div className="singleProductTop__names-bold">
+                {loading ? "" : selectedSize}
+              </div>
             </div>
             <div className="singleProductTop__sizes">
-              {size ? (
+              {loading ? (
+                <div>kir tosh</div>
+              ) : (
                 size.map((detail) => {
                   return (
                     <div
@@ -235,8 +218,6 @@ const SingleProductTop = () => {
                     </div>
                   );
                 })
-              ) : (
-                <div>اتمام سایز!</div>
               )}
             </div>
           </div>
@@ -244,31 +225,81 @@ const SingleProductTop = () => {
             <button className="singleProductTop__add">
               افزودن به سبد خرید
             </button>
-            <div className="singleProductTop__number">1</div>
+            <div className="singleProductTop__numbers">
+              <button
+                onClick={addHandler}
+                className="singleProductTop__adderCon"
+              >
+                <BiPlus className="singleProductTop__adder" />
+              </button>
+              <div className="singleProductTop__number">{qty}</div>
+              <button
+                disabled={qty > 1 ? false : true}
+                className="singleProductTop__adderCon"
+                onClick={minusHandler}
+              >
+                <BiMinus className="singleProductTop__adder" />
+              </button>
+            </div>
           </div>
-          <div className="singleProductTop__description"></div>
+          <div className="singleProductTop__descriptions">
+            <div className="singleProductTop__description">
+              <div
+                onClick={descriptionHandler}
+                className="singleProductTop__descriptionCon"
+              >
+                <div className="singleProductTop__description-title">
+                  توضیحات
+                </div>
+                <div className="singleProductTop__description-icon">
+                  {description ? <BiMinus /> : <BiPlus />}
+                </div>
+              </div>
+              {description ? (
+                <div className="singleProductTop__description-show">
+                  {product.description}
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="singleProductTop__box">
+            <Boxes />
+          </div>
         </div>
-      
-          <div className="singleProductTop__left">
-            {loading ?<div className="singleProductTop__left-pic"></div>:<img
+
+        <div className="singleProductTop__left">
+          {loading ? (
+            <div className="singleProductTop__left-pic"></div>
+          ) : (
+            <img
               className="singleProductTop__left-pic"
               src={product.images[0].image}
               alt="a"
-            />}
-            <div className="singleProductTop__left-container">
-            {loading ?<div className="singleProductTop__left-pic"></div>:<img
+            />
+          )}
+          <div className="singleProductTop__left-container">
+            {loading ? (
+              <div className="singleProductTop__left-pic"></div>
+            ) : (
+              <img
                 className="singleProductTop__left-picCon"
                 src={product.images[1].image}
                 alt="a"
-              />}
-               {loading ?<div className="singleProductTop__left-pic"></div>:<img
+              />
+            )}
+            {loading ? (
+              <div className="singleProductTop__left-pic"></div>
+            ) : (
+              <img
                 className="singleProductTop__left-picCon gaper"
                 src={product.images[2].image}
                 alt="b"
-              />}
-            </div>
+              />
+            )}
           </div>
-        
+        </div>
       </div>
     </div>
   );

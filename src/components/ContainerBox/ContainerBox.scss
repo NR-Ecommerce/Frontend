@@ -1,0 +1,41 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.containerBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  @include xxlMinBreakPoint {
+    display: none;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    margin-bottom: 96px;
+    padding: 0 16px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+    display: none;
+    @include xlMinBreakPoint {
+      display: flex;
+    }
+  }
+}

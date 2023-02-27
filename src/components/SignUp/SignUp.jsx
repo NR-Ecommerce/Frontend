@@ -1,10 +1,23 @@
 import { useForm } from "react-hook-form";
 import axiosInstance from "../../hooks/axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./SignUp.scss";
 
 const SignUp = () => {
+  const notify = () => {
+    toast.success("!اکانت شما با موفقیت ساخته شد", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   const {
     setError,
     register,
@@ -28,7 +41,8 @@ const SignUp = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        // navigate("/login");
+        notify()
+        navigate("/login");
       }).catch((res)=>{
           console.log(res.data);
           console.log('kir shodam')

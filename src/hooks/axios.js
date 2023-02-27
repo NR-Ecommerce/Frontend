@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
 			: null,
 		'Content-Type': 'application/json',
 		accept: 'application/json',
-	}, 
+	},
 });
 
 axiosInstance.interceptors.response.use(
@@ -24,7 +24,7 @@ axiosInstance.interceptors.response.use(
 		if (typeof error.response === 'undefined') {
 			alert(
 				'یک خطای سرور/شبکه ​​روی داد. ' +
-					'با عرض پوزش , به زودی آن را برطرف خواهیم کرد.'
+				'با عرض پوزش , به زودی آن را برطرف خواهیم کرد.'
 			);
 			return Promise.reject(error);
 		}
@@ -33,6 +33,7 @@ axiosInstance.interceptors.response.use(
 			error.response.status === 401 &&
 			originalRequest.url === baseURL + 'api/token/refresh/'
 		) {
+			console.log(1);
 			window.location.href = '/login/';
 			return Promise.reject(error);
 		}
@@ -42,18 +43,20 @@ axiosInstance.interceptors.response.use(
 			error.response.status === 401 &&
 			error.response.statusText === 'Unauthorized'
 		) {
+			console.log(2);
 			const refreshToken = localStorage.getItem('refresh_token');
 
 			if (refreshToken) {
 				const tokenParts = JSON.parse(atob(refreshToken.split('.')[1]));
-
+				console.log(3);
 				// exp date in token is expressed in seconds, while now() returns milliseconds:
 				const now = Math.ceil(Date.now() / 1000);
 				console.log(tokenParts.exp);
 
 				if (tokenParts.exp > now) {
+					console.log(4);
 					return axiosInstance
-						.post('api/token/refresh/', { refresh: refreshToken })
+						.post('/api/token/refresh/', { refresh: refreshToken })
 						.then((response) => {
 							localStorage.setItem('access_token', response.data.access);
 							localStorage.setItem('refresh_token', response.data.refresh);

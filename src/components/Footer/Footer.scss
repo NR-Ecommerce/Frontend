@@ -1,0 +1,110 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #d1d1d1;
+  &__container {
+    margin: 80px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 16px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+      margin-top: 112px;
+      margin-bottom: 96px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__parts {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    @include lgMinBreakPoint {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+    @include xlMinBreakPoint {
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+    }
+  }
+  &__part {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 20px;
+    &-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    &-item {
+      font-size: 14px;
+      color: #4b5563;
+      margin-top: 1rem;
+    }
+    &-con{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+    }
+    &-name{
+      margin-right: 10px;
+      display: none;
+      @include xlMinBreakPoint {
+        display: flex ;
+      }
+    }
+  }
+  &__two {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    img {
+      height: 20px;
+      width: 20px;
+    }
+    @include lgMinBreakPoint {
+      justify-content: flex-end;
+      grid-column: 1 / 4;
+    }
+    @include xlMinBreakPoint {
+      grid-column: 1 / 2;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+.hide {
+  display: none;
+  @include xlMinBreakPoint {
+    display: flex;
+  }
+}
+.show {
+  display: flex;
+  @include xlMinBreakPoint {
+    display: none;
+  }
+}
