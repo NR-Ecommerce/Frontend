@@ -107,7 +107,7 @@ const SingleProductTop = () => {
   const [loading, setLoading] = useState(true);
   const [description, setDescription] = useState(false);
   let [qty, setQty] = useState(1);
-  // console.log(size);
+  const [cart, setCart] = useState({});
 
   useEffect(() => {
     axiosInstance
@@ -116,38 +116,69 @@ const SingleProductTop = () => {
         if (res.status <= 300 && res.status >= 200) {
           console.log(res.data);
           setProduct(res.data);
-          setSize(res.data.details[0].sizes)
+          setSize(res.data.details[0].sizes);
           console.log(res.data.details[0].sizes);
           setLoading(false);
+          setCart({
+            picture: res.data.images[0].image,
+            title: res.data.title,
+            price: +res.data.price,
+            color: "",
+            is_available: true,
+            size: "",
+            number: 1,
+            id: 7,
+          });
         }
       })
       .then((res) => {
-
         console.log(product);
         setLoading(false);
+        
       });
     // setProducts(JSON.parse(localStorage.getItem("products")));
   }, []);
-
+  const addToCartHandler = () => {
+    localStorage.setItem(
+      "products",
+      JSON.stringify([...JSON.parse(localStorage.getItem("products")), cart])
+    );
+  };
   const ColorHandler = (e) => {
     let newColor = product.details.find((x) => x.id === +e.target.id);
     setColor(newColor.color.name);
     setSize(newColor.sizes);
-    // console.log(e.target.id);
-    console.log(color);
+
+    console.log(cart);
   };
   const SizeHandler = (e) => {
     let newSize = size.find((x) => x.id === +e.target.id);
     console.log(newSize);
     setSelectedSize(newSize.name);
-    // console.log(size);
-    // setSize(newSize)
+    setCart((prevState) => ({
+      ...prevState,
+      size: newSize.name,
+      color: color,
+    }));
+    console.log(cart);
   };
   const addHandler = () => {
     setQty((e) => ++e);
+    setCart((prevState) => ({
+      ...prevState,
+      number: qty++,
+    }));
+    console.log(cart);
+    console.log(qty);
   };
   const minusHandler = () => {
     setQty((e) => --e);
+    setCart((prevState) => ({
+      ...prevState,
+      number: qty--,
+    }));
+    console.log(cart);
+    console.log(qty);
   };
   const descriptionHandler = () => {
     setDescription((e) => !e);
@@ -222,7 +253,10 @@ const SingleProductTop = () => {
             </div>
           </div>
           <div className="singleProductTop__numbersAndButton">
-            <button className="singleProductTop__add">
+            <button
+              onClick={addToCartHandler}
+              className="singleProductTop__add"
+            >
               افزودن به سبد خرید
             </button>
             <div className="singleProductTop__numbers">

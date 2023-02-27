@@ -71,7 +71,7 @@ const productsApi = [
 ];
 
 const ShoppingCarts = () => {
-  localStorage.setItem('products', JSON.stringify(productsApi));
+  // localStorage.setItem('products', JSON.stringify(productsApi));
   const [products, setProducts] = useState(
     JSON.parse(localStorage.getItem("products"))
   );
