@@ -17,7 +17,7 @@
     -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
     cursor: pointer;
     .mainEplore__see{
-      color: rgb(130, 130, 238);
+       color: rgb(130, 130, 238) !important;
     }
   }
   &__numbers {
@@ -40,6 +40,7 @@
     font-weight: bold;
     font-size: 14px;
     margin-bottom: 10px;
+    color: black !important;
   }
   &__img {
     position: absolute;
@@ -69,5 +70,8 @@
     @include xlMinBreakPoint {
       font-size: 16px;
     }
+  }
+  &__link{
+    text-decoration: none;
   }
 }

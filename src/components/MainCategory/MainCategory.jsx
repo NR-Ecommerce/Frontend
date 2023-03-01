@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./MainCategory.scss";
 
 const MainCategory = ({ bgcolor }) => {
@@ -11,8 +12,14 @@ const MainCategory = ({ bgcolor }) => {
           از برندهای برتر
         </div>
       </div>
-      <button className="mainCategory__button">مشاهده کامل</button>
-      <img className="mainCategory__img" src="https://chisnghiax.com/ciseco/static/media/5.9ddc0dff360795c6f5b5.png" alt="" />
+      <Link to="/category">
+        <button className="mainCategory__button">مشاهده کامل</button>
+      </Link>
+      <img
+        className="mainCategory__img"
+        src="https://chisnghiax.com/ciseco/static/media/5.9ddc0dff360795c6f5b5.png"
+        alt=""
+      />
     </div>
   );
 };
