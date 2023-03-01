@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import "./AccountLayout.scss";
+import axiosInstance from "../../hooks/axios";
 
 const AccountLayout = () => {
   const location = useLocation();
+  const [loading, isLoading] = useState(true);
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    axiosInstance.get(`/api/user/me`).then((res) => {
+      console.log(res.data);
+      setUser(res.data);
+      isLoading(false);
+    });
+  }, []);
   console.log(location.pathname);
   return (
     <>
@@ -12,8 +22,11 @@ const AccountLayout = () => {
           <div className="accountLayout__title">اکانت</div>
           {/* اطلاعات */}
           <div className="accountLayout__det">
-            <div className="accountLayout__det-black">ماهان نجفی</div>{" "}
-            ,09399445617
+            <div className="accountLayout__det-black">
+              {loading ? "نام کاربر" : user.first_name}{" "}
+              {loading ? "شماره کاربر" : user.last_name}
+            </div>{" "}
+            ,{loading ? "شماره کاربر" : user.phone_number} 
           </div>
           <div className="accountLayout__links">
             <Link

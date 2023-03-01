@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MainProduct from "../MainProduct/MainProduct";
 import "./CategoryFilters.scss";
 
@@ -164,34 +165,34 @@ const CategoryFilters = () => {
           </div>
         </div>
         <div className="categoryFilters__left">
-          <div className="categoryFilters__item">
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
+          </Link>
 
-          <div className="categoryFilters__item">
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
-          <div className="categoryFilters__item">
+          </Link>
+          <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </div>
+          </Link>
         </div>
       </div>
     </div>
