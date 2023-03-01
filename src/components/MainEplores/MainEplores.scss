@@ -1,0 +1,138 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+.mainEplores {
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+  width: 100%;
+  height: 400vh;
+  position: relative;
+  // background-color: red;
+  background-color: #f3f4f6b3;
+  @include mdMinBreakPoint {
+    height: 400vh;
+  }
+  @include lgMinBreakPoint {
+    height: 210vh;
+  }
+  @include xlMinBreakPoint {
+    height: 210vh;
+  }
+  @include xxlMinBreakPoint {
+    height: 150vh;
+  }
+  @include screen-full {
+    height: 150vh;
+  }
+  &__container {
+    // background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 100px;
+    @include xlMinBreakPoint {
+      font-size: 36px;
+    }
+  }
+  &__navbarCon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    @include mdMinBreakPoint {
+      width: 110%;
+    }
+    @include lgMinBreakPoint {
+      width: 90%;
+    }
+    @include xlMinBreakPoint {
+      width: 75%;
+    }
+    @include xxlMinBreakPoint {
+      width: 75%;
+    }
+    @include screen-full {
+      width: 75%;
+    }
+  }
+  &__navbar {
+    width: 80%;
+    background-color: white;
+    height: 40px;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.19);
+    border-radius: 9999px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include mdMinBreakPoint {
+      height: 52px;
+    }
+  }
+  &__items {
+    padding: 8px 14px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    color: #475569;
+    cursor: pointer;
+    border-radius: 9999px;
+    @include mdMinBreakPoint {
+      padding: 12px 28px;
+      font-size: 14px;
+    }
+  }
+  &__svg {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+  }
+  &__active {
+    background-color: variables.$primaryColor;
+    color: white;
+  }
+  &__Boxes {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    margin-bottom: 100px;
+    @include lgMinBreakPoint {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include xxlMinBreakPoint {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

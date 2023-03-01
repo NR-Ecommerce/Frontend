@@ -9,6 +9,7 @@ import SignUpPage from './pages/SignUpPage';
 import AccountLayout from './components/AccountLayout/AccountLayout';
 import AccountInfoPage from './pages/AccountInfoPage';
 import SingleProductPage from './pages/SingleProductPage';
+import CategoryPage from './pages/CategoryPage';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
           <Route path="cart" element={<ShoppingCartPage />} />
           <Route path="singleProduct" element={<SingleProductPage />} />
-
+          <Route path='category' element={<CategoryPage/>}/>
           <Route path='dashboard/' element={<AccountLayout/>}>
             <Route path="accountInfo" element={<AccountInfoPage/>}/>
           </Route>

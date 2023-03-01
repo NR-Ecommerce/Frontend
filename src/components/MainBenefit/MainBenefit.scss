@@ -1,0 +1,26 @@
+.mainBenefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  &__pic {
+    height: 140px;
+    width: 140px;
+  }
+  &__step {
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 12px;
+  }
+  &__title {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  &__dec {
+    font-size: 14px;
+    margin-top: 20px;
+    color: #475569;
+    max-width: 200px;
+    text-align: center;
+  }
+}

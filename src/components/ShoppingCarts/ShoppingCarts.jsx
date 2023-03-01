@@ -6,7 +6,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 1",
-    price: "200",
+    price: "20000",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -17,7 +17,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 2",
-    price: "200",
+    price: "20000",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -28,7 +28,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 3",
-    price: "200",
+    price: "20000",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -39,7 +39,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 4",
-    price: "200",
+    price: "30000",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -50,7 +50,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 5",
-    price: "200",
+    price: "20000",
     color: "قرمز",
     is_available: true,
     size: "xl",
@@ -61,7 +61,7 @@ const productsApi = [
     picture:
       "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
     title: "محصول 6",
-    price: "200",
+    price: "20000",
     color: "سفید",
     is_available: false,
     size: "xl",

@@ -41,7 +41,7 @@ const Register = () => {
         axiosInstance.defaults.headers["Authorization"] =
           "Bearer " + localStorage.getItem("access_token");
 
-        navigate(-2);
+        navigate('/dashboard/accountInfo');
         console.log(res);
 
         console.log(res.data);

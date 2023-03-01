@@ -1,0 +1,81 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.categoryFilters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 26px;
+    @include xlMinBreakPoint {
+      flex-direction: row;
+    }
+    // border-bottom: 1px solid #e8e8e8;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__right {
+    width: 100%;
+    @include xlMinBreakPoint {
+      width: 30%;
+    }
+  }
+  &__left {
+    // height: 180vh;
+    width: 100%;
+    padding-top: 50px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    // grid-template-columns: repeat(1, 1fr);
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 50px 0;
+    border-bottom: 1px solid #e8e8e8;
+    width: 100%;
+    &-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+  &__inputs {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  &__input {
+    background-color: red;
+    height: 17px;
+    width: 17px;
+    border: none;
+  }
+  &__item {
+    height: 400px !important;
+    width: 250px !important;
+  }
+}

@@ -1,9 +1,19 @@
 import React from 'react'
+import MainSlider from '../components/MainSlider/MainSlider'
+import MainBenefits from '../components/MainBenefits/MainBenefits'
+import MainProducts from '../components/MainProducts/MainProducts'
+import MainCategories from '../components/MainCategories/MainCategories'
+import MainEplores from '../components/MainEplores/MainEplores'
 
 const Home = () => {
   return (
-    < >
-    </>
+    <div>
+    <MainSlider/>
+    <MainCategories/>
+    <MainBenefits/>
+    <MainProducts/>
+    <MainEplores/>
+    </div>
   )
 }
 

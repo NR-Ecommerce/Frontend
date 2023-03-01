@@ -1,0 +1,73 @@
+@use "../../sassStyles/mixins" as *;
+@use "../../sassStyles/variables";
+
+.mainEplore {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: white;
+  padding: 30px;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+    .mainEplore__see{
+      color: rgb(130, 130, 238);
+    }
+  }
+  &__numbers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &__pic {
+    height: 110px;
+    width: 110px;
+    background-color: rgb(225, 222, 222);
+    border-radius: 50%;
+  }
+  &__see {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  &__img {
+    position: absolute;
+    left: -120px;
+    bottom: 0;
+    height: 300px;
+    width: 240px;
+    // clip: rect(0, 100px, 200px, 0);
+  }
+  &__dec {
+    font-size: 0.875rem;
+    color: rgb(100, 116, 139);
+    @include xlMinBreakPoint {
+      font-size: 16px;
+    }
+  }
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    @include xlMinBreakPoint {
+      font-size: 2rem;
+    }
+  }
+  &__num {
+    font-size: 14px;
+    color: rgb(89, 102, 121);
+    @include xlMinBreakPoint {
+      font-size: 16px;
+    }
+  }
+}

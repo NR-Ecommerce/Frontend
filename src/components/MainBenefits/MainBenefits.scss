@@ -1,0 +1,66 @@
+@use "../../sassStyles/mixins" as *;
+
+.mainBenefits {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 16px;
+  position: relative;
+  top: 0;
+  border-bottom: 1px solid #f5f1f1;
+  z-index: 1000;
+  background-color: #fff;
+  // height: 80vh;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    @include mdMinBreakPoint {
+      max-width: 600px;
+    }
+    @include lgMinBreakPoint {
+      margin: 0 7.5px;
+      max-width: 770px;
+    }
+    @include xlMinBreakPoint {
+      max-width: 1000px;
+    }
+    @include xxlMinBreakPoint {
+      max-width: 1200px;
+    }
+    @include screen-full {
+      max-width: 1300px;
+    }
+  }
+  &__benefits {
+    margin-top: 96px;
+    margin-bottom: 46px;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    @include lgMinBreakPoint {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include xlMinBreakPoint {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+.line {
+  position: absolute;
+  top: 150px;
+  z-index: -1;
+  display: none;
+  @include xlMinBreakPoint {
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    max-width: 950px;
+  }
+}

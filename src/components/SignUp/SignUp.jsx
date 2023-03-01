@@ -30,7 +30,7 @@ const SignUp = () => {
   const onSubmitHandler = (data) => {
     delete data.confirm_password;
     console.log(data);
-    navigate('/login  ');
+    navigate("/login  ");
     axiosInstance
       .post(`api/user/register/`, {
         phone_number: data.phone_number,
@@ -41,12 +41,15 @@ const SignUp = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        notify()
+        notify();
+      })
+      .then(() => {
         navigate("/login");
-      }).catch((res)=>{
-          console.log(res.data);
-          console.log('kir shodam')
-          // setError('phone_number',{type:'requr',message})
+      })
+      .catch((res) => {
+        console.log(res.data);
+        console.log("kir shodam");
+        // setError('phone_number',{type:'requr',message})
       });
   };
 
@@ -76,7 +79,7 @@ const SignUp = () => {
                     val.length != 11
                   ) {
                     console.log(val.charAt(0));
-                    return "شماره تلفن وارد شده معتیر نیست.";
+                    return "شماره تلفن وارد شده معتبر نیست.";
                   }
                 },
               })}
@@ -155,7 +158,7 @@ const SignUp = () => {
           )}
           <input type="submit" className="signUp__button" value="ثبت نام" />
           <div className="signUp__goToReg">
-             اکانت دارید؟
+            اکانت دارید؟
             <Link className="signUp__goToReg-link" to="/login">
               وارد شوید
             </Link>

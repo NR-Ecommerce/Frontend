@@ -5,99 +5,114 @@ import axiosInstance from "../../hooks/axios";
 import axios from "axios";
 import { BiPlus, BiMinus } from "react-icons/bi";
 import Boxes from "../Boxes/Boxes";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const productApi = {
-  id: 1,
-  title: "t-shirt",
-  category: 4,
-  description: "beautiful t-shirt",
-  stock: 10,
-  price: "200000.00",
-  props: [
-    {
-      id: 1,
-      product: 1,
-      product_prop: {
+
+  const productApi = {
+    id: 1,
+    title: "t-shirt",
+    category: 4,
+    description: "beautiful t-shirt",
+    stock: 10,
+    price: "200000.00",
+    props: [
+      {
         id: 1,
-        name: "material",
-        type: 1,
-      },
-      value: "thread",
-    },
-  ],
-  images: [
-    {
-      id: 1,
-      image:
-        "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-      alt_text: "t-shirt",
-      is_preview: true,
-      product: 1,
-    },
-    {
-      id: 2,
-      image:
-        "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-      alt_text: "t-shirt",
-      is_preview: false,
-      product: 1,
-    },
-    {
-      id: 3,
-      image:
-        "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-      alt_text: "t-shirt",
-      is_preview: false,
-      product: 1,
-    },
-  ],
-  details: [
-    {
-      id: 1,
-      product: 1,
-      color: {
-        id: 1,
-        name: "قرمز",
-        code: "#d43d3d",
-      },
-      sizes: [
-        {
+        product: 1,
+        product_prop: {
           id: 1,
-          name: "XS",
+          name: "material",
+          type: 1,
         },
-      ],
-    },
-    {
-      id: 2,
-      product: 1,
-      color: {
-        id: 2,
-        name: "آبی",
-        code: "#4848d6",
+        value: "thread",
       },
-      sizes: [
-        {
+    ],
+    images: [
+      {
+        id: 1,
+        image:
+          "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
+        alt_text: "t-shirt",
+        is_preview: true,
+        product: 1,
+      },
+      {
+        id: 2,
+        image:
+          "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
+        alt_text: "t-shirt",
+        is_preview: false,
+        product: 1,
+      },
+      {
+        id: 3,
+        image:
+          "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
+        alt_text: "t-shirt",
+        is_preview: false,
+        product: 1,
+      },
+    ],
+    details: [
+      {
+        id: 1,
+        product: 1,
+        color: {
+          id: 1,
+          name: "قرمز",
+          code: "#d43d3d",
+        },
+        sizes: [
+          {
+            id: 1,
+            name: "XS",
+          },
+        ],
+      },
+      {
+        id: 2,
+        product: 1,
+        color: {
           id: 2,
-          name: "S",
+          name: "آبی",
+          code: "#4848d6",
         },
-        {
-          id: 3,
-          name: "M",
-        },
-        {
-          id: 4,
-          name: "L",
-        },
-        {
-          id: 5,
-          name: "XL",
-        },
-      ],
-    },
-  ],
-  is_available: true,
-  created_at: "2023-02-23T17:17:04.557875Z",
-};
+        sizes: [
+          {
+            id: 2,
+            name: "S",
+          },
+          {
+            id: 3,
+            name: "M",
+          },
+          {
+            id: 4,
+            name: "L",
+          },
+          {
+            id: 5,
+            name: "XL",
+          },
+        ],
+      },
+    ],
+    is_available: true,
+    created_at: "2023-02-23T17:17:04.557875Z",
+  };
+  const notify = () => {
+    toast.success("!محصول با موفقیت به سبد خرید اضافه شد", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 const SingleProductTop = () => {
   const id = "1";
   const [product, setProduct] = useState(productApi);
@@ -143,6 +158,7 @@ const SingleProductTop = () => {
       "products",
       JSON.stringify([...JSON.parse(localStorage.getItem("products")), cart])
     );
+    notify()
   };
   const ColorHandler = (e) => {
     let newColor = product.details.find((x) => x.id === +e.target.id);
@@ -232,7 +248,7 @@ const SingleProductTop = () => {
             </div>
             <div className="singleProductTop__sizes">
               {loading ? (
-                <div>kir tosh</div>
+                <div></div>
               ) : (
                 size.map((detail) => {
                   return (
@@ -335,7 +351,10 @@ const SingleProductTop = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
+
     </div>
+    
   );
 };
 

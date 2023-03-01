@@ -172,7 +172,7 @@ const ShoppingCart = ({ product, products, setProducts }) => {
       </div>
       <div className="shoppingCart__left">
         <div className="shoppingCart__price">
-          {product.price}
+          {(+product.price).toLocaleString()}
           <div className="shoppingCart__price--toman">تومان</div>
         </div>
         <div onClick={removeHandler} className="shoppingCart__remove">
