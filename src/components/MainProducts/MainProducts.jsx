@@ -6,8 +6,28 @@ import "swiper/css";
 import "swiper/css/pagination";
 import MainProduct from "../MainProduct/MainProduct";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../hooks/axios";
 
 const MainProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/api/store/products`)
+      .then((res) => {
+        if (res.status <= 300 && res.status >= 200) {
+          setProducts(res.data.slice(0,6));
+          console.log(res.data);
+          setLoading(false);
+        }
+      })
+      .then((res) => {
+        console.log(products);
+      });
+    // setProducts(JSON.parse(localStorage.getItem("products")));
+  }, []);
   return (
     <div className="mainProducts">
       <div className="mainProducts__container">
@@ -34,36 +54,18 @@ const MainProducts = () => {
           modules={[]}
           className="mySwiper"
         >
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Link className="mainProducts__Link" to="/SingleProduct">
-              <MainProduct />
-            </Link>
-          </SwiperSlide>
+          {loading
+            ? ""
+            : products.map((product) => {
+                return (
+                  <SwiperSlide key={product.id}>
+                    <Link className="mainProducts__Link" to={`/products/${product.id}`}>
+                      <MainProduct product={product}/>
+                    </Link>
+                  </SwiperSlide>
+                );
+              })}
+          
         </Swiper>
       </div>
     </div>

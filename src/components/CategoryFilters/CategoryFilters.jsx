@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import MainProduct from "../MainProduct/MainProduct";
 import "./CategoryFilters.scss";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../hooks/axios";
 
 const CategoryFilters = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axiosInstance
+      .get(`/api/store/products`)
+      .then((res) => {
+        if (res.status <= 300 && res.status >= 200) {
+          setProducts(res.data);
+          console.log(res.data);
+          setLoading(false);
+        }
+      })
+      .then((res) => {
+        console.log(products);
+      });
+    // setProducts(JSON.parse(localStorage.getItem("products")));
+  }, []);
   return (
     <div className="categoryFilters">
       <div className="categoryFilters__container">
@@ -16,7 +36,7 @@ const CategoryFilters = () => {
                 name="cat1"
                 value="1"
               />
-              <label for="vehicle1"> کیف</label>
+              <label htmlFor="vehicle1"> کیف</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -25,7 +45,7 @@ const CategoryFilters = () => {
                 name="cat2"
                 value="2"
               />
-              <label for="vehicle2"> کفش</label>
+              <label htmlFor="vehicle2"> کفش</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -34,7 +54,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3"> لپ تاپ</label>
+              <label htmlFor="vehicle3"> لپ تاپ</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -43,7 +63,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">اکسسوری</label>
+              <label htmlFor="vehicle3">اکسسوری</label>
             </div>
           </div>
           <div className="categoryFilters__box">
@@ -55,7 +75,7 @@ const CategoryFilters = () => {
                 name="cat1"
                 value="1"
               />
-              <label for="vehicle1"> قرمز</label>
+              <label htmlFor="vehicle1"> قرمز</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -64,7 +84,7 @@ const CategoryFilters = () => {
                 name="cat2"
                 value="2"
               />
-              <label for="vehicle2"> آبی</label>
+              <label htmlFor="vehicle2"> آبی</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -73,7 +93,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">زرد</label>
+              <label htmlFor="vehicle3">زرد</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -82,7 +102,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">سبز</label>
+              <label htmlFor="vehicle3">سبز</label>
             </div>
           </div>
           <div className="categoryFilters__box">
@@ -94,7 +114,7 @@ const CategoryFilters = () => {
                 name="cat1"
                 value="1"
               />
-              <label for="vehicle1"> S</label>
+              <label htmlFor="vehicle1"> S</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -103,7 +123,7 @@ const CategoryFilters = () => {
                 name="cat2"
                 value="2"
               />
-              <label for="vehicle2"> L</label>
+              <label htmlFor="vehicle2"> L</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -112,7 +132,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">XL</label>
+              <label htmlFor="vehicle3">XL</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -121,7 +141,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">XXL</label>
+              <label htmlFor="vehicle3">XXL</label>
             </div>
           </div>
           <div className="categoryFilters__box">
@@ -133,7 +153,7 @@ const CategoryFilters = () => {
                 name="cat1"
                 value="1"
               />
-              <label for="vehicle1"> پرفروش ترین</label>
+              <label htmlFor="vehicle1"> پرفروش ترین</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -142,7 +162,7 @@ const CategoryFilters = () => {
                 name="cat2"
                 value="2"
               />
-              <label for="vehicle2"> گران ترین</label>
+              <label htmlFor="vehicle2"> گران ترین</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -151,7 +171,7 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">ارزان ترین</label>
+              <label htmlFor="vehicle3">ارزان ترین</label>
             </div>
             <div className="categoryFilters__inputs">
               <input
@@ -160,12 +180,21 @@ const CategoryFilters = () => {
                 name="cat3"
                 value="3"
               />
-              <label for="vehicle3">جدید ترین</label>
+              <label htmlFor="vehicle3">جدید ترین</label>
             </div>
           </div>
         </div>
         <div className="categoryFilters__left">
-          <Link to='/singleProduct' className="categoryFilters__item">
+          {loading
+            ? ""
+            : products.map((product) => {
+                return (
+                  <Link key={product.id} to={`/products/${product.id}`} className="categoryFilters__item">
+                    <MainProduct  product={product}/>
+                  </Link>
+                );
+              })}
+          {/* <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
           </Link>
           <Link to='/singleProduct' className="categoryFilters__item">
@@ -192,7 +221,7 @@ const CategoryFilters = () => {
           </Link>
           <Link to='/singleProduct' className="categoryFilters__item">
             <MainProduct />
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>
@@ -200,5 +229,3 @@ const CategoryFilters = () => {
 };
 
 export default CategoryFilters;
-
-

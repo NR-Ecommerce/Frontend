@@ -20,8 +20,9 @@ function App() {
           <Route path="register" element={<SignUpPage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="cart" element={<ShoppingCartPage />} />
-          <Route path="singleProduct" element={<SingleProductPage />} />
-          <Route path='category' element={<CategoryPage/>}/>
+          {/* <Route path="singleProduct" element={<SingleProductPage />} /> */}
+          <Route path='products' element={<CategoryPage/>}/>
+          <Route path='/products/:productId' element={<SingleProductPage />}/>
           <Route path='dashboard/' element={<AccountLayout/>}>
             <Route path="accountInfo" element={<AccountInfoPage/>}/>
           </Route>

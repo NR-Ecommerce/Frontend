@@ -1,14 +1,14 @@
 import "./MainProduct.scss";
 import { FaStar } from "react-icons/fa";
 
-const MainProduct = () => {
-  const price=135000;
+const MainProduct = ({ product }) => {
+  const price = +product.price;
 
   return (
     <div className="mainProduct">
       <img
-        src="	https://nr-ecommerce.iran.liara.run/media/images/detail1.f45e3a4d9bfeafd2f70b_ecQft5P.jpg"
-        alt=""
+        src={product.images[0].image}
+        alt={product.images[0].alt_text}
         className="mainProduct__img"
       />
       <div className="mainProduct__colors">
@@ -16,11 +16,11 @@ const MainProduct = () => {
         <div className="mainProduct__color"></div>
         <div className="mainProduct__color"></div>
       </div>
-      <div className="mainProduct__title"> محصول زیاد</div>
-      <div className="mainProduct__dec">خیلی خیلی محصول</div>
+      <div className="mainProduct__title">{product.title}</div>
+      <div className="mainProduct__dec">{product.id}</div>
       <div className="mainProduct__rates">
         <div className="mainProduct__rate">
-          (73 نظر)   4.3
+          (73 نظر) 4.3
           <FaStar className="star" />
         </div>
         <div className="mainProduct__price">{price.toLocaleString()}</div>

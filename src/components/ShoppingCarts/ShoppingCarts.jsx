@@ -24,50 +24,6 @@ const productsApi = [
     number: 3,
     id: "2",
   },
-  {
-    picture:
-      "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 3",
-    price: "20000",
-    color: "قرمز",
-    is_available: true,
-    size: "xl",
-    number: 3,
-    id: "3",
-  },
-  {
-    picture:
-      "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 4",
-    price: "30000",
-    color: "قرمز",
-    is_available: true,
-    size: "xl",
-    number: 3,
-    id: "4",
-  },
-  {
-    picture:
-      "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 5",
-    price: "20000",
-    color: "قرمز",
-    is_available: true,
-    size: "xl",
-    number: 3,
-    id: "5",
-  },
-  {
-    picture:
-      "https://fastly.picsum.photos/id/302/200/200.jpg?hmac=pq7hvNyk4pwuEe5cs2qejMNTc7S1kgev72rC8bSHdJE",
-    title: "محصول 6",
-    price: "20000",
-    color: "سفید",
-    is_available: false,
-    size: "xl",
-    number: 1,
-    id: "6",
-  },
 ];
 
 const ShoppingCarts = () => {
@@ -107,7 +63,8 @@ const ShoppingCarts = () => {
                 products.map((product) => {
                   return (
                     <ShoppingCart
-                      setProducts={setProducts}
+                      key={product.id}
+                       setProducts={setProducts}
                       products={products}
                       product={product}
                     />
