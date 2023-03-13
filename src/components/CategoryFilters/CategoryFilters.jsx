@@ -13,7 +13,7 @@ const CategoryFilters = () => {
       .get(`/api/store/products`)
       .then((res) => {
         if (res.status <= 300 && res.status >= 200) {
-          setProducts(res.data);
+          setProducts(res.data.results);
           console.log(res.data);
           setLoading(false);
         }

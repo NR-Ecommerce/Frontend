@@ -18,13 +18,14 @@ const MainProducts = () => {
       .get(`/api/store/products`)
       .then((res) => {
         if (res.status <= 300 && res.status >= 200) {
-          setProducts(res.data.slice(0,6));
-          console.log(res.data);
+          setProducts(res.data.results.slice(0,6));
+          console.log(res.data.results);
           setLoading(false);
         }
       })
       .then((res) => {
-        console.log(products);
+        // console.log(products);
+        // console.log(res.data.results);
       });
     // setProducts(JSON.parse(localStorage.getItem("products")));
   }, []);

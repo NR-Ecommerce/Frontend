@@ -12,9 +12,12 @@ const MainProduct = ({ product }) => {
         className="mainProduct__img"
       />
       <div className="mainProduct__colors">
+        {product.details.map((color)=>{
+          return <div style={{backgroundColor:`${color.color.code}`}} className="mainProduct__color"></div>
+        })}
+        {/* <div className="mainProduct__color"></div>
         <div className="mainProduct__color"></div>
-        <div className="mainProduct__color"></div>
-        <div className="mainProduct__color"></div>
+        <div className="mainProduct__color"></div> */}
       </div>
       <div className="mainProduct__title">{product.title}</div>
       <div className="mainProduct__dec">{product.id}</div>
