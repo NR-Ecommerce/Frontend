@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="navbar__Left">
           <FiMenu className="navbar__Left--icon" />
         </div>
-        <div className="navbar__center">
+        <Link to='/' className="navbar__center">
           <svg
             width="162"
             height="46"
@@ -54,7 +54,7 @@ const Navbar = () => {
               fill="black"
             />
           </svg>
-        </div>
+        </Link>
         {isSearch && <Searchbar update={searchHandler} />}
         <div className="navbar__right">
           <div className="navbar__icons">
