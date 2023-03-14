@@ -1,6 +1,6 @@
 import "./MainSlider.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { BiSearch } from "react-icons/bi";
+// import { BiSearch } from "react-icons/bi";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -29,7 +29,7 @@ const MainSlider = () => {
               <div className="mainSlider__butCon">
                 <div className="mainSlider__button">
                   مشاهده بیشتر
-                  <BiSearch className="mainSlider__button-icon" />
+                  {/* <BiSearch className="mainSlider__button-icon" /> */}
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@ const MainSlider = () => {
               <div className="mainSlider__butCon">
                 <div className="mainSlider__button">
                   مشاهده بیشتر
-                  <BiSearch className="mainSlider__button-icon" />
+                  {/* <BiSearch className="mainSlider__button-icon" /> */}
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ const MainSlider = () => {
               <div className="mainSlider__butCon">
                 <div className="mainSlider__button">
                   مشاهده بیشتر
-                  <BiSearch className="mainSlider__button-icon" />
+                  {/* <BiSearch className="mainSlider__button-icon" /> */}
                 </div>
               </div>
             </div>
