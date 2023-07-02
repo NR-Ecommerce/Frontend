@@ -13,7 +13,7 @@ import CategoryPage from './pages/CategoryPage';
 
 function App() {
   return (
-    <Layout>
+      <Layout>
 
       <Routes>
         <Route path="/"  >
